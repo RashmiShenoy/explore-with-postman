@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "cb889700-7b12-4928-a2e6-5a76de0847cb",
+		"name": "Open source API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pokemon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36c3650c-aabf-478c-a142-f27d4ca1f786",
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test('Validate first pokemon name', function () {\r",
+							"    pm.expect(pm.response.text()).to.include('bulbasaur');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validate pokemon type\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.types[0].type.name).to.eql(\"grass\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "a591b4bc-c52c-4e32-9551-3ede867d95df",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pokeapi.co/api/v2/pokemon/1/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get country list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a3ff088-5b39-474c-967f-34f66500456f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should have India\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"India\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test Afghanisthan code to equal AF\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].alpha2Code).to.eql(\"AF\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate capital of India\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[104].capital).to.eql(\"New Delhi\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3e92594c-8c91-4eac-9a7b-d3d0d974e10b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://restcountries.com/v2/all"
+			},
+			"response": []
+		}
+	]
+}
