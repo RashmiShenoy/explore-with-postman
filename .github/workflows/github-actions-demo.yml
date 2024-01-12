@@ -25,14 +25,14 @@ jobs:
           
     # Make directory to upload the test results
       - name: Make Directory for results
-        run: mkdir -p testResults
+        run: mkdir -p Results
       
       - name: Run API Tests
         run: newman run "Postman demo open source/postman-demo.json"
 
     # Upload the contents of Test Results directory to workspace
-      - name: Output the run Details
+      - name: Upload test results
         uses: actions/upload-artifact@v2
         with: 
-          name: RunReports
-          path: testResults
+          name: newman-report
+          path: newman
