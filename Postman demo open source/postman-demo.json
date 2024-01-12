@@ -25,6 +25,9 @@
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.types[0].type.name).to.eql(\"grass\");\r",
 							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
 							"\r",
 							""
 						],
