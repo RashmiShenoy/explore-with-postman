@@ -27,12 +27,15 @@ jobs:
       - name: Make Directory for results
         run: mkdir -p Results
       
+      - name: Download newman reporter
+        run: npm -g newman-reporter-htmlextra
+      
       - name: Run API Tests
-        run: newman run "Postman demo open source/postman-demo.json"
+        run: newman run "Postman demo open source/postman-demo.json" -r htmlextra
 
     # Upload the contents of Test Results directory to workspace
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with: 
           name: newman-report
-          path: reports/
+          path: newman
